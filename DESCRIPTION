@@ -1,0 +1,20 @@
+Package: gofBridge
+Type: Package
+Title: Goodness-of-Fit Tests for Homogeneous Gamma and Wiener Degradation Processes
+Version: 0.1.0
+Authors@R: person(given = "TITO A. Rytrace", email = "rytracetito5@gmail.com", role = c("aut", "cre"))
+Description: Goodness-of-fit tests for the homogeneous gamma process and the
+    homogeneous Wiener process observed at regular or irregular inspection
+    times. For irregular inspections, the path is reconstructed on a regular
+    grid by a gamma bridge or a Brownian bridge, with the bridge parameter
+    estimated under the null hypothesis, following either the method of
+    Grall-Maes (2012) <doi:10.1177/1748006X12462522> (regular grid of step
+    t_N / N) or the Ext Bridge method (fine grid containing all observations).
+    Tests for the gamma law (Henze-Meintanis-Ebner, Villasenor-Gonzalez-Estrada,
+    Kolmogorov-Smirnov, Betsch-Ebner) or for the normal law (Shapiro-Wilk,
+    Lilliefors, Jarque-Bera, Anderson-Darling, Cramer-von Mises,
+    D'Agostino-Pearson) are then applied to the increments.
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Imports: stats, gofgamma, goft, nortest, tseries, fBasics, statmod
