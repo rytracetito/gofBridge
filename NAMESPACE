@@ -1,4 +1,4 @@
-export(Bridge)
+export(gof.process)
 export(sim_HGP, sim_NHGP, sim_IGP, sim_HWP, sim_NHWP)
 export(arrondir_temps)
 export(estimer, estimer_wiener)

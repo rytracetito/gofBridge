@@ -5,7 +5,7 @@
 Arrondit les instants d'inspection à \code{digits} décimales, ajoute l'instant
 0 et supprime les doublons (avec un avertissement). À appliquer avant la
 simulation ou le recueil des données lorsque la méthode \code{"ExtBridge"} de
-\code{\link{Bridge}} est utilisée.
+\code{\link{gof.process}} est utilisée.
 }
 \usage{arrondir_temps(t, digits = 0)}
 \arguments{

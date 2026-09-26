@@ -1,7 +1,7 @@
 Package: gofBridge
 Type: Package
 Title: Goodness-of-Fit Tests for Homogeneous Gamma and Wiener Degradation Processes
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person(given = "TITO A. Rytrace", email = "rytracetito5@gmail.com", role = c("aut", "cre"))
 Description: Goodness-of-fit tests for the homogeneous gamma process and the
     homogeneous Wiener process observed at regular or irregular inspection

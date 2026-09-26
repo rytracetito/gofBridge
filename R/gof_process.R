@@ -8,7 +8,7 @@
 # Tous les tests du processus sont appliqués aux mêmes accroissements.
 # Decision = TRUE : rejet de H0 au niveau alpha.
 # 'boot' et 'a_poids' ne servent que pour HGP ; 'digits' et 'M_max' que pour "ExtBridge".
-Bridge <- function(X, processus, methode = "Bridge", digits = 0, M_max = 100,
+gof.process <- function(X, processus, methode = "Bridge", digits = 0, M_max = 100,
                    alpha = 0.05, boot = 199, a_poids = 1) {
   if (missing(processus) || !is.character(processus) || length(processus) != 1 ||
       !(processus %in% c("HGP", "HWP"))) {

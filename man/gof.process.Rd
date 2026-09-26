@@ -1,5 +1,5 @@
-\name{Bridge}
-\alias{Bridge}
+\name{gof.process}
+\alias{gof.process}
 \title{Tests d'adéquation au processus gamma homogène ou au processus de Wiener homogène}
 \description{
 Teste l'adéquation d'une trajectoire observée au processus gamma homogène (HGP)
@@ -9,8 +9,8 @@ observés ; sinon, la trajectoire est d'abord reconstruite par pont gamma (HGP)
 ou pont brownien (HWP), le paramètre du pont étant estimé sous H0.
 }
 \usage{
-Bridge(X, processus, methode = "Bridge", digits = 0, M_max = 100,
-       alpha = 0.05, boot = 199, a_poids = 1)
+gof.process(X, processus, methode = "Bridge", digits = 0, M_max = 100,
+            alpha = 0.05, boot = 199, a_poids = 1)
 }
 \arguments{
   \item{X}{data.frame ou matrice avec des colonnes nommées \code{t} (instants
@@ -91,11 +91,11 @@ set.seed(1)
 t_obs <- arrondir_temps(runif(40, 0, 80))
 
 X <- sim_HWP(t_obs, mu = 2, sigma = 1.5)
-Bridge(X, "HWP")$resultats
-Bridge(X, "HWP", methode = "ExtBridge")$resultats
+gof.process(X, "HWP")$resultats
+gof.process(X, "HWP", methode = "ExtBridge")$resultats
 
 Y <- sim_HGP(t_obs, a = 2, b = 1)
-r <- Bridge(Y, "HGP", boot = 19)
+r <- gof.process(Y, "HGP", boot = 19)
 r$resultats
 r$methode
 r$parametre_pont

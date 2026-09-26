@@ -16,25 +16,18 @@ Tests appliqués (tous sur les mêmes accroissements) :
 
 ## Installation
 
-Les dépendances (`gofgamma`, `goft`, `nortest`, `tseries`, `fBasics`, `statmod`, toutes sur CRAN) sont déclarées obligatoires dans `DESCRIPTION` : les deux méthodes ci-dessous les installent automatiquement.
+Les dépendances (`gofgamma`, `goft`, `nortest`, `tseries`, `fBasics`, `statmod`, toutes sur CRAN) sont déclarées obligatoires dans `DESCRIPTION` et sont installées automatiquement.
 
 ```r
 install.packages("remotes")
-```
-
-Depuis GitHub (dépôt privé : jeton d'accès personnel en lecture sur `gofBridge`, enregistré une fois avec `gitcreds::gitcreds_set()`) :
-
-```r
 remotes::install_github("rytracetito/gofBridge")
 ```
 
-Depuis le fichier source :
+Si `install_github` échoue avec `HTTP error 401` (ancien jeton GitHub enregistré sur la machine), installer directement l'archive du dépôt, sans jeton :
 
 ```r
-remotes::install_local("chemin/vers/gofBridge_0.1.0.tar.gz")
+remotes::install_url("https://github.com/rytracetito/gofBridge/archive/refs/heads/main.tar.gz")
 ```
-
-`install.packages("gofBridge_0.1.0.tar.gz", repos = NULL, type = "source")` n'installe pas les dépendances : l'utiliser seulement si elles sont déjà installées.
 
 ## Utilisation
 
@@ -45,22 +38,22 @@ set.seed(1)
 t_obs <- arrondir_temps(runif(40, 0, 80))
 
 X <- sim_HWP(t_obs, mu = 2, sigma = 1.5)
-r <- Bridge(X, processus = "HWP", methode = "Bridge")
+r <- gof.process(X, processus = "HWP", methode = "Bridge")
 r$resultats        # une ligne par test : statistique, valeur critique ou p-valeur, décision
 r$methode          # "direct" (plan régulier), "Bridge" ou "ExtBridge"
 r$parametre_pont   # sigma estimé sous H0
 
 Y <- sim_HGP(t_obs, a = 2, b = 1)
-Bridge(Y, processus = "HGP", methode = "ExtBridge")$resultats
+gof.process(Y, processus = "HGP", methode = "ExtBridge")$resultats
 ```
 
-`Decision = TRUE` signifie le rejet de H0 au niveau `alpha`. Documentation : `?Bridge`, `?sim_HGP`, `?arrondir_temps`, `?estimer`.
+`Decision = TRUE` signifie le rejet de H0 au niveau `alpha`. Documentation : `?gof.process`, `?sim_HGP`, `?arrondir_temps`, `?estimer`.
 
 ## Fonctions exportées
 
 | Fonction | Rôle |
 |---|---|
-| `Bridge` | Détection du plan, pont, tests d'adéquation |
+| `gof.process` | Détection du plan, reconstruction par pont (`methode = "Bridge"` ou `"ExtBridge"`), tests d'adéquation |
 | `sim_HGP`, `sim_NHGP`, `sim_IGP` | Simulation : gamma homogène, gamma non homogène, gaussien inverse |
 | `sim_HWP`, `sim_NHWP` | Simulation : Wiener homogène, Wiener non homogène X(t) = mu Lambda(t) + sigma B(tau(t)) |
 | `arrondir_temps` | Arrondi des instants d'inspection (méthode `"ExtBridge"`) |
