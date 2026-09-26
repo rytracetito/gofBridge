@@ -16,23 +16,25 @@ Tests appliqués (tous sur les mêmes accroissements) :
 
 ## Installation
 
-Dépendances (CRAN) : `gofgamma`, `goft`, `nortest`, `tseries`, `fBasics`, `statmod`.
+Les dépendances (`gofgamma`, `goft`, `nortest`, `tseries`, `fBasics`, `statmod`, toutes sur CRAN) sont déclarées obligatoires dans `DESCRIPTION` : les deux méthodes ci-dessous les installent automatiquement.
 
 ```r
-install.packages(c("gofgamma", "goft", "nortest", "tseries", "fBasics", "statmod"))
+install.packages("remotes")
+```
+
+Depuis GitHub (dépôt privé : jeton d'accès personnel en lecture sur `gofBridge`, enregistré une fois avec `gitcreds::gitcreds_set()`) :
+
+```r
+remotes::install_github("rytracetito/gofBridge")
 ```
 
 Depuis le fichier source :
 
 ```r
-install.packages("gofBridge_0.1.0.tar.gz", repos = NULL, type = "source")
+remotes::install_local("chemin/vers/gofBridge_0.1.0.tar.gz")
 ```
 
-Depuis GitHub (dépôt privé : jeton d'accès personnel nécessaire) :
-
-```r
-remotes::install_github("rytracetito/gofBridge", auth_token = "<jeton>")
-```
+`install.packages("gofBridge_0.1.0.tar.gz", repos = NULL, type = "source")` n'installe pas les dépendances : l'utiliser seulement si elles sont déjà installées.
 
 ## Utilisation
 
